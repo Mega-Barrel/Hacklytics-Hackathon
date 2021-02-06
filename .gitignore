@@ -1,3 +1,12 @@
+# Custom Files
+
+.vscode
+hackathon.studio
+example_1.py
+example.py
+data/output.csv
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
