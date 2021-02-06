@@ -1,0 +1,21 @@
+#TODO
+'''
+
+#For Design
+
+1. Project Name, Short Bios
+2. Explanation
+3. Dataset Introduction
+4. Where did we get our data, and how we did this (tech, skills)
+5. Why did we get this / motivation and purpose behind it
+6. Impact and importance
+7. Plots
+8. More Viz, and insights/analysis
+9. choice Navbar(users can select options)
+
+
+# For Football Visualization
+
+
+
+'''
