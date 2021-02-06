@@ -1,3 +1,10 @@
+
+#TODO 
+# 1. Add Pages to See Users Full Statistics with Sentiment Analysis Score
+# 2. Make changes in Correlation Map.
+# 3. Add some more Viz.
+# 4. Make Some Minor Changes to App.
+
 import streamlit as st
 import pandas as pd
 import base64
@@ -6,8 +13,9 @@ import seaborn as sns
 import numpy as np
 
 
+st.set_option('deprecation.showPyplotGlobalUse', False)                            # To remove Warnings Messages
 
-st.title('Football - Social Media Recruiting Assistance')
+st.title('Football - Social Media Recruiting Assistance')                          # Set Title for the Web App
 
 
 st.markdown("""
@@ -24,18 +32,16 @@ Tech, football/related sports, engineering, Atlanta, etc.!
 * **Data source:** [pro-football-reference.com](https://www.pro-football-reference.com/).
 """)
 
-dataframe = st.beta_container()
+dataframe = st.beta_container()                                                   # Creating A Container for dataframe
 
 
-
-@st.cache
+@st.cache                                                                         # Reading the CSV file
 def get_data(filename):
     players_data = pd.read_csv(filename)
     return players_data
 
 
-with dataframe:
-    
+with dataframe:                                                                   # Displaying the DataFrame with options to show data Student Year wise.
     data = get_data('data/players.csv')
 
     st.header('Data as Per Student Year')
@@ -45,4 +51,37 @@ with dataframe:
     mask_years = data['year'].isin(year_selected)
     data = data[mask_years]
     st.write(data)
+
+
+
+'''
+Intercorrelation Heatmap for Viz.
+'''
+
+if st.button('Intercorrelation Heatmap'):
+    st.header('Inter correlation HeatMap')
+    data = get_data('data/players.csv')
+
+    corr = data.corr()
+    mask = np.zeros_like(corr)
+    # mask[np.triu_indices_from(mask)] = True
+    with sns.axes_style("white"):
+        f, ax = plt.subplots(figsize=(7, 5))
+        ax = sns.heatmap(corr, mask=mask, vmax=1, square=True)
+    st.pyplot()
+
+
+'''
+BarPlot for Viz.
+'''
+
+if st.button('Barplot'):
+    st.header('Barplot')
+    data = get_data('data/players.csv')
+
+    with sns.axes_style("white"):
+        f, ax = plt.subplots(figsize=(7, 5))
+        ax = sns.barplot(x = 'gamesplayed', y = 'high_school', data = data)
+    st.pyplot()
+
 
