@@ -1,5 +1,10 @@
 import streamlit as st
 
+st.set_page_config(
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 class MultiApp:
     """Framework for combining multiple streamlit applications.
     Usage:
@@ -35,11 +40,22 @@ class MultiApp:
             "title": title,
             "function": func
         })
+    
 
-    def run(self):
+    def run(self):  
+
+        st.sidebar.title('''Football - Social Media Recruiting Assistance''')
+        st.sidebar.markdown('''1. Character assessment: The stronger the character, the more attractive a prospect is as a potential candidate.''')
+        st.sidebar.markdown('''2. Candidate identification: Find football recruits that GT may not be aware of. For example: athletes interested in Georgia
+    Tech, football/related sports, engineering, Atlanta, etc.!''')  
+
+
+
+        st.sidebar.title('Navigation')
         app = st.sidebar.radio(
-            'Go To',
+            '',
             self.apps,
-            format_func=lambda app: app['title'])
+            format_func=lambda app: app['title']
+        )          
 
         app['function']()
