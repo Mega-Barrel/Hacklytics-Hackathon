@@ -40,7 +40,7 @@ def app():
     corr = data.corr()
     mask = np.zeros_like(corr)
     with sns.axes_style("white"):
-        f, ax = plt.subplots(figsize=(10, 10))
+        f, ax = plt.subplots(figsize=(15, 10))
         ax = sns.heatmap(corr, mask=mask, vmax=1, square=True,  annot=True)
     st.pyplot()
 
