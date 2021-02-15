@@ -23,7 +23,7 @@ def app():
     for name, group in data.groupby('state'):
         trace = go.Histogram()
         trace.name = name
-        trace.x = group['RATING']
+        trace.x = group['Rating']
         fig.add_trace(trace)
 
     fig.update_layout(
