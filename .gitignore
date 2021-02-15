@@ -1,13 +1,6 @@
 # Custom Files
 
 .vscode
-hackathon.studio
-example_1.py
-example.py
-data/output.csv
-Custom_dashboard.py
-front-end.py
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
